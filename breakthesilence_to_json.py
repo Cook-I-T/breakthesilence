@@ -118,7 +118,7 @@ class Converter:
             sms['flags'] = to_uint(sms['type'])
 
             sms['type'] = 1
-            if sms['flags'] & Types.BASE_OUTBOX_TYPE:
+            if sms['flags'] & Types.BASE_TYPE_MASK in [Types.BASE_OUTBOX_TYPE, Types.BASE_SENT_TYPE, Types.BASE_SENDING_TYPE, Types.BASE_SENT_FAILED_TYPE]:
                 sms['type'] = 2
 
             if sms['flags'] & Types.KEY_EXCHANGE_MASK:
